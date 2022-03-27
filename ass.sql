@@ -74,9 +74,6 @@ create table bills
 alter table staffs 
 add foreign key (adminid) references admins(adminid);
 alter table products
-add foreign key (nhanvienid) refalter table staffs 
-add foreign key (adminid) references admins(adminid);
-alter table products
 add foreign key (nhanvienid) references staffs(nhanvienid);
 alter table customers
 add foreign key (nhanvienid) references staffs(nhanvienid);
@@ -84,7 +81,6 @@ alter table changed_passwords
 add foreign key(khachhangid) references customers(khachhangid);
 alter table products_detail
 add foreign key(sanphamid) references products(sanphamid);
-select*from changed_passwordserences staffs(nhanvienid);
 alter table customers
 add foreign key (nhanvienid) references staffs(nhanvienid);
 alter table changed_passwords
@@ -95,3 +91,9 @@ alter table bills
 add foreign key(ctspid) references products_detail(ctspid);
 alter table bills
 add foreign key(khachhangid) references customers(khachhangid);
+alter table admins 
+add column password varchar(65)not null;
+alter table staffs 
+add column password varchar(65)not null;
+alter table customers
+add column password varchar(65)not null;

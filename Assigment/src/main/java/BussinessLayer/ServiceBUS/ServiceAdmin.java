@@ -1,5 +1,6 @@
 package BussinessLayer.ServiceBUS;
 
+import java.util.HashMap;
 import java.util.List;
 
 import BussinessLayer.IServiceBUS.IServiceAdmin;
@@ -29,6 +30,14 @@ public ServiceAdmin() {
 	@Override
 	public List<Admin> selectAll() throws Exception {
 		return admin.selectAll();
+	}
+	@Override
+	public HashMap<String, String> checkError(String username, String passwd) throws Exception {
+		return admin.checkError(username, passwd);
+	}
+	@Override
+	public Admin findByID(String id) {
+		return admin.findByID(id);
 	}
 
 }
