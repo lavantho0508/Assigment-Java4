@@ -39,10 +39,6 @@ public class Staff implements Serializable {
 
 	private Integer trangthai;
 
-	//bi-directional many-to-one association to Customer
-	@OneToMany(mappedBy="staff")
-	private List<Customer> customers;
-
 	//bi-directional many-to-one association to Product
 	@OneToMany(mappedBy="staff")
 	private List<Product> products;
@@ -133,28 +129,6 @@ public class Staff implements Serializable {
 
 	public void setTrangthai(Integer trangthai) {
 		this.trangthai = trangthai;
-	}
-
-	public List<Customer> getCustomers() {
-		return this.customers;
-	}
-
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
-
-	public Customer addCustomer(Customer customer) {
-		getCustomers().add(customer);
-		customer.setStaff(this);
-
-		return customer;
-	}
-
-	public Customer removeCustomer(Customer customer) {
-		getCustomers().remove(customer);
-		customer.setStaff(null);
-
-		return customer;
 	}
 
 	public List<Product> getProducts() {

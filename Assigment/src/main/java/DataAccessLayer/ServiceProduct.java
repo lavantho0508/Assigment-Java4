@@ -20,6 +20,7 @@ public ServiceProduct() {
 		try {
 			em.getTransaction().begin();
 			em.persist(entity);
+			em.flush();
 			em.getTransaction().commit();
 			return entity;
 		} catch (Exception e) {

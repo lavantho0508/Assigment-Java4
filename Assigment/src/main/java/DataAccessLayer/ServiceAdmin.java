@@ -21,6 +21,7 @@ public ServiceAdmin() {
 	try {
 		em.getTransaction().begin();
 		em.persist(entity);
+		em.flush();
 		em.getTransaction().commit();
 		return entity;
 	} catch (Exception e) {
@@ -74,12 +75,19 @@ public ServiceAdmin() {
 		if(username.length()<5) {
 			flagError.put("username_length", "Tài khoảng phải lớn hơn 6 ký tự");
 		}
-		if(!username.matches("^[a-zA-Z0-9]+$")) {
-			flagError.put("username_invalid", "Tài khoản  không hợp lệ");
-		}
 		if(findByID(username)==null) {
 			flagError.put("username_exist", "Tài khoản  không tồn tại");
 		}
+		if(passwd.isBlank()) {
+			flagError.put("passwd_null", "Mật khẩu không được để trống");
+		}
+		if(passwd.length()<5) {
+			flagError.put("passwd_length", "mật khẩu phải lớn hơn 6 ký tự");
+		}
+		if(selectAdmin(username, passwd)==null) {
+			flagError.put("account_exist", "Tài khoản hoặc mật khẩu không chính xác");
+		}
+		
 		return flagError;
 		
 	}
@@ -88,5 +96,19 @@ public ServiceAdmin() {
 	Admin ad=em.find(Admin.class, id);
 	return ad;
 	}
+	@Override
+	public Admin selectAdmin(String username, String passwd) {
+		try {
+			String query="SELECT a FROM Admin a WHERE a.adminid=:adminid AND a.password=:password";
+			TypedQuery<Admin> list=em.createQuery(query, Admin.class);
+		    Admin a=list.setParameter("adminid",username)
+		    		.setParameter("password",passwd).getSingleResult();
+		    return a;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
 
 }

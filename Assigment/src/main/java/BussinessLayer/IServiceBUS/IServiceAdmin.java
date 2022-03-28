@@ -12,4 +12,5 @@ public Admin update(Admin entity)throws Exception;
 public List<Admin>selectAll()throws Exception;
 public HashMap<String, String>checkError(String username,String passwd) throws Exception;
 public Admin findByID(String id);
+public Admin selectAdmin(String username,String passwd);
 }

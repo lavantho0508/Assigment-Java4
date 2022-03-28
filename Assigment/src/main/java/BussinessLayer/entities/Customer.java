@@ -44,11 +44,6 @@ public class Customer implements Serializable {
 	@OneToMany(mappedBy="customer")
 	private List<ChangedPassword> changedPasswords;
 
-	//bi-directional many-to-one association to Staff
-	@ManyToOne
-	@JoinColumn(name="nhanvienid")
-	private Staff staff;
-
 	public Customer() {
 	}
 
@@ -166,14 +161,6 @@ public class Customer implements Serializable {
 		changedPassword.setCustomer(null);
 
 		return changedPassword;
-	}
-
-	public Staff getStaff() {
-		return this.staff;
-	}
-
-	public void setStaff(Staff staff) {
-		this.staff = staff;
 	}
 
 }

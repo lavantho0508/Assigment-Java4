@@ -21,6 +21,8 @@ public class Bill implements Serializable {
 
 	private Long soluong;
 
+	private Integer trangthai;
+
 	//bi-directional many-to-one association to Customer
 	@ManyToOne
 	@JoinColumn(name="khachhangid")
@@ -56,6 +58,14 @@ public class Bill implements Serializable {
 
 	public void setSoluong(Long soluong) {
 		this.soluong = soluong;
+	}
+
+	public Integer getTrangthai() {
+		return this.trangthai;
+	}
+
+	public void setTrangthai(Integer trangthai) {
+		this.trangthai = trangthai;
 	}
 
 	public Customer getCustomer() {

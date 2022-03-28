@@ -39,5 +39,10 @@ public ServiceAdmin() {
 	public Admin findByID(String id) {
 		return admin.findByID(id);
 	}
+	@Override
+	public Admin selectAdmin(String username, String passwd) {
+		return admin.selectAdmin(username, passwd);
+	}
+	
 
 }
