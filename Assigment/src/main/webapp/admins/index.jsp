@@ -24,13 +24,13 @@ if(session.getAttribute("admin")==null){
             <img src="../images/bannerAdmin.png" alt="" height="300px">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                  <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">Home</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Quản lý admin</button>
+                  <button class="nav-link ${active}" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Quản lý admin</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Quản lý nhân viên</button>
+                  <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="true">Quản lý nhân viên</button>
                 </li>
               </ul>
               <div class="tab-content" id="myTabContent">
@@ -76,7 +76,7 @@ if(session.getAttribute("admin")==null){
 				<div class="tab-pane fade" id="profile" role="tabpanel"
 					aria-labelledby="profile-tab">
 					<span class="h2 text-danger">Quản lý admin</span> <br>
-					<form action="index" method="post">
+					<form action="login" method="post">
 						<label for="username" class="form-label"> Tài khoản </label> <input
 							type="text" name="adminid" id="username" class="form-control">
 						<label for="name" class="form-label"> Họ tên </label> <input
@@ -96,7 +96,7 @@ if(session.getAttribute("admin")==null){
 							type="text" name="diachi" id="diachi" class="form-control">
 						<label for="passwd" class="form-label"> Password </label> <input
 							type="password" name="password" id="passwd" class="form-control">
-						<button class="btn btn-success m-2" value="add" name="btn_add">Thêm</button>
+						<button type="submit" class="btn btn-success m-2" value="add" name="btn_add">Thêm</button>
 					</form>
 					<table class="table table-bordered table-responsive">
 						<thead>

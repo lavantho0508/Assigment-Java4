@@ -59,7 +59,7 @@
                       </c:choose>
                       <li class="list-group-item"><input type="checkbox" name="remember" id="remember" value="remember"> <label for="remember">Remember me ?</label></li>
                       <li class="list-group-item">
-                       <input type="submit" value="Đăng nhập" name="login" class="btn btn-success">
+                     <button type="submit" class="btn btn-success" name="login" value="login">Đăng nhập</button>
                     </li>
                     </ul>
                   </div>

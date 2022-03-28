@@ -109,6 +109,16 @@ public ServiceAdmin() {
 			return null;
 		}
 	}
+	public static void main(String[] args) throws Exception {
+		Admin a=new Admin();
+		a.setAdminid("tholv1111111");
+		a.setDiachi("12");
+		a.setGioitinh(true);
+		a.setHoten("Thọ lã");
+		a.setPassword("123");
+		new ServiceAdmin().add(a);
+		
+	}
 
 
 }

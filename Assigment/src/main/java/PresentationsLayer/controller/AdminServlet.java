@@ -24,7 +24,7 @@ import java.util.BitSet;
 
 
 @WebServlet({"/admin/login",
-		   "/admin/index"
+		     "/admin/index"
 })
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,7 +40,7 @@ public class AdminServlet extends HttpServlet {
         staff=new ServiceStaff();
         listAdmin=new ArrayList<Admin>();
         listStaff=new ArrayList<Staff>();   
-    }
+    } 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("UTF-8");
 		response.getCharacterEncoding();
@@ -63,7 +63,7 @@ public class AdminServlet extends HttpServlet {
 					session.setAttribute("admin", username);	
 					request.setAttribute("admin", listAdmin);
 					request.setAttribute("staff", listStaff);			
-				    request.getRequestDispatcher("/admins/index.jsp").forward(request, response);
+				    request.getRequestDispatcher("/admin/index").forward(request, response);
 					
 				}else {
 					HashMap<String,String>error=admin.checkError(username, passwd);
@@ -80,8 +80,10 @@ public class AdminServlet extends HttpServlet {
 					System.out.println("demo");
 					listAdmin=new ArrayList<Admin>();
 					listAdmin=admin.selectAll();
+					request.removeAttribute("admin");
 					request.setAttribute("admin", listAdmin);
-					request.getRequestDispatcher("/admin/login").forward(request, response);
+				   request.setAttribute("active", "active");
+					request.getRequestDispatcher("/admin/index").forward(request, response);
 					System.out.println(listAdmin.size());
 				}
 				
@@ -94,7 +96,7 @@ public class AdminServlet extends HttpServlet {
 		}
     }
     private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	request.getRequestDispatcher("/admin/login").forward(request, response);
+    	request.getRequestDispatcher("/admins/index.jsp").forward(request, response);
     }
     //do get
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -124,5 +126,6 @@ public class AdminServlet extends HttpServlet {
 			
 		}
 	}
+
 
 }
